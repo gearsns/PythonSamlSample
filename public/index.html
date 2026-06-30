@@ -1,0 +1,26 @@
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<h1>Hello! This is saml sample</h1>
+<button id="login" class="hidden">Login</button>
+<div id="notes"></div>
+<script>
+    (async () => {
+        try { 
+            const ret = await fetch('/api/me');
+            if (ret.status === 401){
+                document.getElementById("login").classList.toggle("hidden");
+            } else if(ret.ok) {
+                const data = await ret.json(); 
+                document.getElementById("notes").textContent = `Welcome : ${data.attributes["User.FullName"]} (${data.user_id})`;
+            }
+        } catch(e) {
+            console.log(e)
+        }
+    })();
+    document.getElementById("login").addEventListener("click", () => {
+        location.href = "./login";
+    });
+ </script>

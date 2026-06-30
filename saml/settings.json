@@ -1,0 +1,28 @@
+{
+	"strict": false,
+	"debug": true,
+	"sp": {
+		"entityId": "http://localhost:8080/metadata",
+		"assertionConsumerService": {
+			"url": "http://localhost:8080/saml/acs",
+			"binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+		},
+		"singleLogoutService": {
+			"url": "http://localhost:8080/saml/sls",
+			"binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+		},
+		"NameIDFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+	},
+	"idp": {
+		"entityId": "https://app.onelogin.com/saml/metadata/YOUR_IDP_ID",
+		"singleSignOnService": {
+			"url": "http://localhost:9000/mock/login",
+			"binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+		},
+		"singleLogoutService": {
+			"url": "https://YOUR_IDP_DOMAIN.onelogin.com/trust/saml2/http-redirect/slo/YOUR_IDP_ID",
+			"binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+		},
+		"x509cert": ""
+	}
+}
